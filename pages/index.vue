@@ -14,7 +14,7 @@
 <style scoped lang="scss">
 .color{
 
-  background-image: url("");
+  //background-image: url("");
 
 }
 @function section-margin($margin) {
