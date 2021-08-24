@@ -1,73 +1,226 @@
-import colors from 'vuetify/es5/util/colors'
+import FilterWarningsPlugin from 'webpack-filter-warnings-plugin'
 
-export default {
-  // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  ssr: false,
+import {theme} from './config/vuetify.options'
+import languages from './static/lang/languages'
 
-  // Global page headers: https://go.nuxtjs.dev/config-head
+
+module.exports = {
+  mode: 'universal',
+  /*
+  ** Headers of the page
+  */
   head: {
-    titleTemplate: '%s - libertyclinicFront',
-    title: 'libertyclinicFront',
     htmlAttrs: {
-      lang: 'en'
+      dir: 'ltr'
     },
+    title: 'Liberty Clinic',
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      {charset: 'utf-8'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1.0'},
+      {name: 'description', content: 'liberty clinic'},
+      {name: 'msapplication-TileColor', content: '#FFFFFF'},
+      {name: 'msapplication-TileImage', content: '/favicons/ms-icon-144x144.png'},
+      // PWA primary color
+      {name: 'theme-color', content: theme.primary},
+      // Facebook
+      {property: 'author', content: 'inspire'},
+      {property: 'og:site_name', content: 'libertyclinic.prod-projet.com'},
+      {property: 'og:locale', content: 'en_US'},
+      {property: 'og:type', content: 'website'},
+      // Twitter
+      {property: 'twitter:site', content: 'libertyclinic.prod-projet.com'},
+      {property: 'twitter:domain', content: 'libertyclinic.prod-projet.com'},
+      {property: 'twitter:creator', content: 'liberty clinic'},
+      {property: 'twitter:card', content: 'summary'},
+      {property: 'twitter:image:src', content: '/images/logo.png'},
+      {property: 'og:url', content: 'libertyclinic.prod-projet.com'},
+      {property: 'og:title', content: 'libertyclinic'},
+      {property: 'og:description', content: 'libertyclinic projet'},
+      {property: 'og:image:width', content: '1200'},
+      {property: 'og:image:height', content: '630'}
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      // Favicon
+      {rel: 'shortcut icon', href: '/favicons/favicon.ico'},
+      {rel: 'apple-touch-icon', sizes: '57x57', href: '/favicons/apple-icon-57x57.png'},
+      {rel: 'apple-touch-icon', sizes: '60x60', href: '/favicons/apple-icon-60x60.png'},
+      {rel: 'apple-touch-icon', sizes: '72x72', href: '/favicons/apple-icon-72x72.png'},
+      {rel: 'apple-touch-icon', sizes: '76x76', href: '/favicons/apple-icon-76x76.png'},
+      {rel: 'apple-touch-icon', sizes: '114x114', href: '/favicons/apple-icon-114x114.png'},
+      {rel: 'apple-touch-icon', sizes: '120x120', href: '/favicons/apple-icon-120x120.png'},
+      {rel: 'apple-touch-icon', sizes: '144x144', href: '/favicons/apple-icon-144x144.png'},
+      {rel: 'apple-touch-icon', sizes: '152x152', href: '/favicons/apple-icon-152x152.png'},
+      {rel: 'apple-touch-icon', sizes: '180x180', href: '/favicons/apple-icon-180x180.png'},
+      {rel: 'icon', type: 'image/png', sizes: '192x192', href: '/favicons/android-icon-192x192.png'},
+      {rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicons/favicon-32x32.png'},
+      {rel: 'icon', type: 'image/png', sizes: '96x96', href: '/favicons/favicon-96x96.png'},
+      {rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicons/favicon-16x16.png'},
+      {rel: 'manifest', href: '/favicons/manifest.json'},
+      // Fonts and Icons
+      {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap'},
+      {rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons'},
+      {rel: 'stylesheet', href: 'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'}
     ]
   },
-
-  // Global CSS: https://go.nuxtjs.dev/config-css
+  /*
+  ** Customize the progress-bar color
+  */
+  loading: {color: theme.primary},
+  /*
+  ** Global CSS
+  */
   css: [
+    '~/assets/transition.scss',
+    '~/assets/vuetify-overide.scss',
+    '~/assets/vendors/animate.css',
+    '~/assets/vendors/animate-extends.css',
+    '~/assets/vendors/hamburger-menu.css',
+    '~/assets/vendors/slick-carousel/slick.css',
+    '~/assets/vendors/slick-carousel/slick-theme.css',
+	'~/assets/global.css'
   ],
-
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
+  /*
+  ** Plugins to load before mounting the App
+  */
   plugins: [
+    '~/plugins/vue-fragment-config',
+    '~/plugins/vue-wow-config',
+    { src: '~plugins/i18n-config.js' },
+    { src: '~/plugins/caroussel-config', ssr: false },
+    { src: '~/plugins/countup-config', ssr: false },
+    { src: '~/plugins/vue-scroll-nav', ssr: false },
+	{ src: '~/plugins/vue-video-background', ssr: false }
   ],
-
-  // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
-
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
+  /*
+  ** Nuxt.js dev-modules
+  */
   buildModules: [
-    // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
   ],
-
-  // Modules: https://go.nuxtjs.dev/config-modules
+  /*
+  ** Nuxt.js modules
+  */
   modules: [
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
+    ['@nuxtjs/axios'],
+    ['@nuxtjs/html-minifier', {log: 'once', logHtml: true}],
+    [
+      'nuxt-mq',
+      {
+        // Default breakpoint for SSR
+        defaultBreakpoint: 'default',
+        breakpoints: {
+          xsDown: 599,
+          xsUp: 600,
+          smDown: 959,
+          smUp: 960,
+          mdDown: 1279,
+          mdUp: 1280,
+          lgDown: 1919,
+          lgUp: 1920,
+          xl: Infinity
+        }
+      }
+    ],
+    [
+      'nuxt-i18n',
+      {
+        // Options
+        //to make it seo friendly remove below line and add baseUrl option to production domain
+        seo: false,
+        // baseUrl: 'https://my-nuxt-app.com',
+        lazy: true,
+        locales: languages,
+        defaultLocale: 'en',
+        vueI18n: {
+          fallbackLocale: 'en',
+        },
+        detectBrowserLanguage: {
+          useCookie: true,
+          cookieKey: 'i18n_redirected',
+          alwaysRedirect: true
+        },
+        langDir: 'static/lang/'
+      }
+    ]
+
   ],
-
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
-
-  // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
+  /*
+  ** vuetify module configuration
+  ** https://github.com/nuxt-community/vuetify-module
+  */
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
-    theme: {
-      dark: true,
-      themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3
+    customVariables: ['~/assets/styles.scss'],
+    optionsPath: './config/vuetify.options.js'
+  },
+  /*
+  ** Render configuration
+  */
+  render: {
+    bundleRenderer: {
+      directives: {
+        shouldPreload: (file, type) => {
+          return ['script', 'style', 'font'].includes(type)
+        },
+        scroll: function (el, binding) {
+          let f = function (evt) {
+            if (binding.value(evt, el)) {
+              window.removeEventListener('scroll', f)
+            }
+            window.addEventListener('scroll', f)
+          }
+
         }
       }
     }
   },
-
-  // Build Configuration: https://go.nuxtjs.dev/config-build
+  /*
+  ** Build configuration
+  */
   build: {
+    /*
+    ** You can extend webpack config here
+    */
+    // cssSourceMap: false,
+    loaders: {
+      vus: {cacheBusting: true},
+      scss: {sourceMap: false}
+    },
+    extend(config, ctx) {
+      config.plugins.push(
+        new FilterWarningsPlugin({
+          exclude: /Critical dependency: the request of a dependency is an expression/
+        })
+      );
+      if (ctx.isDev && ctx.isClient) {
+        config.module.rules.push({
+          enforce: "pre",
+          test: /\.(js|vue)$/,
+          loader: "eslint-webpack-plugin",
+          exclude: /([node_modules, static])/,
+          options: {
+            fix: false
+          }
+        });
+      }
+    }
+  },
+  /*
+  ** Page Layout transition
+  */
+  layoutTransition: {
+    name: 'layout',
+    mode: 'out-in',
+    beforeEnter(el) {
+      console.log('Before enter...');
+    },
+    afterLeave(el) {
+      console.log('afterLeave', el)
+    }
+  },
+  /*
+  ** Application Port
+  */
+  server: {
+    port: 8000, // default: 3000
   }
 }

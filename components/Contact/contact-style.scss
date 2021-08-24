@@ -1,0 +1,133 @@
+.contact-wrap {
+	// max-width: 600px;
+	// margin: 0 auto -32px;
+	position: relative;
+	background-color: $light-text-primary;
+	min-height: calc(100vh - 60px);
+	padding-top: $spacing16;
+	padding-bottom: $spacing16;
+}
+
+.paper {
+	padding: $spacing4;
+	width: 50%;
+}
+.text-field {
+	top: $spacing2;
+	position: relative;
+}
+.right-icon {
+	@include margin-left($spacing1);
+}
+.wrap-items {
+	display: flex;
+	margin: 0 -15px;
+	.field-wrapped {
+		padding: 0 15px;
+	}
+}
+.submit {
+	color: white;
+	background-color: $light-text-secondary;
+}
+
+.feature-list {
+	// text-align: center;
+	// padding:0 $spacing12 ;
+	display: grid;
+	align-items: center;
+	height: 100%;
+	@include breakpoints-down("md") {
+		// padding:0 $spacing12 ;
+		display: grid;
+		align-items: center;
+		height: 100%;
+		text-align: center;
+	}
+	& h5 {
+		// margin: spacing(3, 0);
+		margin-top: $spacing6;
+		font-size: 50px;
+		line-height: 63px;
+		font-weight: 900px;
+		color: #ffffff;
+		// @include breakpoints-down(sm) {
+		//   text-align: center;
+		// }
+	}
+	& p {
+		font-size: 20px;
+		line-height: 24px;
+		font-weight: 300;
+		text-transform: uppercase;
+		color: #ffffff;
+	}
+	& h6 {
+		margin-top: $spacing6;
+		margin-bottom: $spacing8;
+		font-size: 20px;
+		line-height: 24px;
+		font-weight: 900px;
+		color: #2c67d3;
+	}
+	& ul {
+		// margin-top: spacing(3);
+		display: flex;
+		flex-direction: column;
+		list-style-type: none;
+		padding-left: 0 !important;
+		margin-top: $spacing12;
+		& li {
+			font-size: 20px;
+			line-height: 36px;
+			letter-spacing: 0px;
+			color: #ffffffb4;
+			opacity: 0.7;
+		}
+		& li:not(:last-child) {
+			margin-bottom: $spacing1;
+		}
+	}
+
+	.title {
+        color: #fff;
+        font-size: 24px!important;
+        line-height: 54px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: left;
+    }
+    .sub-title,
+    .sub-title p {
+        color: #fff;
+        font-size: 48px;
+        line-height: 52px;
+        font-weight: 500;
+        width: 100%;
+        text-align: left;
+        padding: 0;
+        margin: 0 auto;
+		padding-right: 50px;
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-height: 600px) {
+	.feature-list h5 {
+		font-size: 42px;
+		line-height: 45px;
+	}
+}
+
+@media (max-width: 640px) {
+	.feature-list .h5 {
+		font-size: 42px;
+		line-height: 45px;
+	}
+}
+@media (max-width: 425px) {
+	.feature-list .h5 {
+		font-size: 32px;
+		line-height: 35px;
+	}
+}
