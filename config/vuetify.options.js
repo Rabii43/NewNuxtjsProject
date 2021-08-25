@@ -7,10 +7,10 @@ if (typeof Storage !== 'undefined') { // eslint-disable-line
 
 const palette = {
   greenLeaf: {
-    primary: '#002E54', // primary main
+    primary: '#002E54', // primary Landingpage
     primarylight: colors.green.lighten4, // primary light
     primarydark: colors.green.darken4, // primary dark
-    secondary: '#2C67D3', // secondary main
+    secondary: '#2C67D3', // secondary Landingpage
     secondarylight: colors.blueGrey.lighten4, // secondary light
     secondarydark: colors.blueGrey.darken3, // secondary dark
     anchor: '#3667D4' // link

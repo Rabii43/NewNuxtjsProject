@@ -173,6 +173,7 @@ module.exports = {
       }
     }
   },
+
   /*
   ** Build configuration
   */
@@ -220,7 +221,5 @@ module.exports = {
   /*
   ** Application Port
   */
-  server: {
-    port: 8000, // default: 3000
-  }
+
 }

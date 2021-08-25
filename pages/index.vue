@@ -1,57 +1,36 @@
 <template>
-  <div class="color">
-        <section id="contact-us">
-          <contact />
-        </section>
+<div>
 
-      <v-container>
-        <main-footer />
-      </v-container>
+    <div class="pagemain" >
+
+        <Page/>
+
+
+        <contact/>
+
+
     </div>
+
+
+  <main-footer/>
+</div>
+
+
 
 </template>
 
 <style scoped lang="scss">
-.color{
+.pagemain{
 
-  //background-image: url("");
-
-}
-@function section-margin($margin) {
-  @return $margin * 15;
-}
-#news {
-  background: #f5f5f5;
-}
-.main-wrap {
-  position: relative;
+  flex-wrap: nowrap;
   width: 100%;
-  overflow: hidden;
-}
-.space-bottom {
-  margin-bottom: section-margin($spacing1);
-}
-.space-top {
-  padding-top: section-margin($spacing1);
-}
-.pad-bottom {
-  padding-bottom: section-margin($spacing1);
-}
-.pad-top {
-  padding-top: section-margin($spacing1);
-}
-.container-wrap {
-  // margin-top: $spacing7;
-  margin-top: 60px;
-  & > section {
-    position: relative;
-  }
-}
+  height: 94vh;
+  background:  url('/images/Groupe de masques 1.png') ;
+  background-size:cover ;
+  opacity: 300%;
 
-#technology {
+  border-image-repeat: stretch;
 
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 </style>
 
@@ -60,16 +39,15 @@
 
 import Contact from "~/components/Contact";
 import Footer from "~/components/Footer";
-
+import Page from "~/components/Landingpage";
 
 export default {
   components: {
     Contact,
+    Page,
     "main-footer": Footer,
   },
-  methods:{
-
-  },
+  methods: {},
 
 };
 </script>
